@@ -31,6 +31,9 @@ catalogs:
       specifier: ^66.3.2
       version: 66.3.2
   default:
+    '@effect/eslint-plugin':
+      specifier: ^0.3.2
+      version: 0.3.2
     effect:
       specifier: ^3.16.12
       version: 3.16.12
@@ -93,7 +96,7 @@ importers:
         specifier: catalog:dev
         version: 4.16.1(@unocss/eslint-plugin@66.3.2(eslint@9.30.1(jiti@2.4.2))(typescript@5.8.3))(@vue/compiler-sfc@3.5.17)(eslint-plugin-format@1.0.1(eslint@9.30.1(jiti@2.4.2)))(eslint@9.30.1(jiti@2.4.2))(typescript@5.8.3)
       '@effect/eslint-plugin':
-        specifier: ^0.3.2
+        specifier: 'catalog:'
         version: 0.3.2
       '@iconify-json/carbon':
         specifier: catalog:icons
