@@ -86,3 +86,25 @@ This project includes a live-streaming chat interface powered by OpenAI:
 - Chat UI available at the home page (/)
 - Streaming responses using Server-Sent Events
 - API endpoint at `/server/api/chat.post.ts`
+
+## Git Workflow Commands
+
+### Create Conventional Commit and Push
+
+When asked to "commit and push" or similar, follow these steps:
+
+1. Check git status and review all changes
+2. Create a conventional commit with appropriate type (feat, fix, docs, style, refactor, test, chore)
+3. Push to the current branch
+
+Example command: "commit and push the latest changes"
+
+### Conventional Commit Types
+
+- `feat:` - New feature
+- `fix:` - Bug fix
+- `docs:` - Documentation only changes
+- `style:` - Changes that don't affect code meaning (formatting, missing semicolons, etc)
+- `refactor:` - Code change that neither fixes a bug nor adds a feature
+- `test:` - Adding or updating tests
+- `chore:` - Changes to build process or auxiliary tools

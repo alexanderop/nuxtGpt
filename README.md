@@ -1,80 +1,99 @@
-<p align="center">
-<img src="https://user-images.githubusercontent.com/11247099/140462375-7b7ac4db-35b7-453c-8a05-13d8d20282c4.png" width="600"/>
-</p>
+# NuxtGPT
 
-<h2 align="center">
-<a href="https://github.com/antfu/vitesse">Vitesse</a> for Nuxt 3
-</h2><br>
-
-<p align="center">
-<br>
-<a href="https://vitesse-nuxt3.netlify.app/">🖥 Online Preview</a>
-<br><br>
-<a href="https://stackblitz.com/github/antfu/vitesse-nuxt"><img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" alt=""></a>
-</p>
+A real-time streaming chat application built with Nuxt 3 and OpenAI's GPT-4 API.
 
 ## Features
 
-- 💚 [Nuxt 3](https://nuxt.com/) - SSR, ESR, File-based routing, components auto importing, modules, etc.
+- 🤖 **Real-time Chat** - Stream responses from OpenAI's GPT-4 API
+- 💬 **Clean UI** - Modern chat interface with message bubbles
+- 🌗 **Dark Mode** - Automatic dark/light mode support
+- 💚 **Nuxt 3** - Built on the latest Nuxt framework
+- ⚡️ **Vite** - Lightning-fast HMR and builds
+- 🎨 **UnoCSS** - Atomic CSS for styling
+- 🦾 **TypeScript** - Full type safety
+- 📲 **PWA Ready** - Installable as a Progressive Web App
 
-- ⚡️ Vite - Instant HMR.
+## Getting Started
 
-- 🎨 [UnoCSS](https://github.com/unocss/unocss) - The instant on-demand atomic CSS engine.
+### Prerequisites
 
-- 😃 Use icons from any icon sets in Pure CSS, powered by [UnoCSS](https://github.com/unocss/unocss).
+- Node.js 18+ and pnpm
+- OpenAI API key
 
-- 🔥 The `<script setup>` syntax.
+### Setup
 
-- 🍍 [State Management via Pinia](https://github.com/vuejs/pinia), see [./app/composables/user.ts](./app/composables/user.ts).
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/nuxtgpt.git
+cd nuxtgpt
+```
 
-- 📑 [Layout system](./app/layouts).
+2. Install dependencies:
+```bash
+pnpm install
+```
 
-- 📥 APIs auto importing - for Composition API, VueUse and custom composables.
+3. Set up environment variables:
+```bash
+cp .env.example .env
+# Edit .env and add your OPENAI_API_KEY
+```
 
-- 🏎 Zero-config cloud functions and deploy.
+4. Start the development server:
+```bash
+pnpm dev
+```
 
-- 🦾 TypeScript, of course.
+5. Open http://localhost:3000 and start chatting!
 
-- 📲 [PWA](https://github.com/vite-pwa/nuxt) with offline support and auto-update behavior.
-
-## Plugins
-
-### Nuxt Modules
-
-- [VueUse](https://github.com/vueuse/vueuse) - collection of useful composition APIs.
-- [ColorMode](https://github.com/nuxt-modules/color-mode) - dark and Light mode with auto detection made easy with Nuxt.
-- [UnoCSS](https://github.com/unocss/unocss) - the instant on-demand atomic CSS engine.
-- [Pinia](https://github.com/vuejs/pinia) - intuitive, type safe, light and flexible Store for Vue.
-- [VitePWA](https://github.com/vite-pwa/nuxt) - zero-config PWA Plugin for Nuxt 3.
-- [DevTools](https://github.com/nuxt/devtools) - unleash Nuxt Developer Experience.
-
-## IDE
-
-We recommend using [VS Code](https://code.visualstudio.com/) with [Volar](https://github.com/johnsoncodehk/volar) to get the best experience (You might want to disable [Vetur](https://vuejs.github.io/vetur/) if you have it).
-
-## Variations
-
-- [vitesse](https://github.com/antfu/vitesse) - Opinionated Vite Starter Template
-- [vitesse-lite](https://github.com/antfu/vitesse-lite) - Lightweight version of Vitesse
-- [vitesse-nuxt-bridge](https://github.com/antfu/vitesse-nuxt-bridge) - Vitesse for Nuxt 2 with Bridge
-- [vitesse-webext](https://github.com/antfu/vitesse-webext) - WebExtension Vite starter template
-
-## Try it now!
-
-### Online
-
-<a href="https://stackblitz.com/github/antfu/vitesse-nuxt"><img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" alt=""></a>
-
-### GitHub Template
-
-[Create a repo from this template on GitHub](https://github.com/antfu/vitesse-nuxt/generate).
-
-### Clone to local
-
-If you prefer to do it manually with the cleaner git history
+## Development
 
 ```bash
-npx degit antfu/vitesse-nuxt my-nuxt-app
-cd my-nuxt-app
-pnpm i # If you don't have pnpm installed, run: npm install -g pnpm
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm dev
+
+# Type checking
+pnpm typecheck
+
+# Linting
+pnpm lint
+
+# Build for production
+pnpm build
+
+# Preview production build
+pnpm preview
 ```
+
+## Tech Stack
+
+- **Framework**: Nuxt 3 with Vue 3 Composition API
+- **Styling**: UnoCSS (Atomic CSS)
+- **AI Integration**: OpenAI GPT-4 API with streaming
+- **Type Safety**: TypeScript
+- **Package Manager**: pnpm with workspace catalogs
+- **Code Quality**: ESLint with @antfu/eslint-config
+- **Commit Style**: Conventional Commits
+
+## Project Structure
+
+```
+nuxtgpt/
+├── app/
+│   ├── components/     # Auto-imported Vue components
+│   ├── composables/    # Composition utilities and stores
+│   ├── layouts/        # Application layouts
+│   ├── pages/          # File-based routing
+│   └── plugins/        # Nuxt plugins
+├── server/
+│   └── api/           # API endpoints
+├── public/            # Static assets
+└── nuxt.config.ts     # Nuxt configuration
+```
+
+## License
+
+MIT
