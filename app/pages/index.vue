@@ -17,24 +17,28 @@ async function onSend() {
 </script>
 
 <template>
-  <div class="p-4 flex flex-col h-screen bg-white dark:bg-gray-900">
+  <div class="p-4 bg-white flex flex-col h-screen dark:bg-gray-900">
     <!-- messages -->
-    <div ref="scroller" class="flex-1 overflow-y-auto space-y-3 pr-2">
+    <div ref="scroller" class="pr-2 flex-1 overflow-y-auto space-y-3">
       <div
         v-for="(m, i) in messages"
         :key="i"
         :class="m.role === 'user' ? 'text-right' : ''"
       >
         <span
-          class="px-4 py-3 rounded-lg inline-block max-w-[80%] shadow-sm"
-          :class="m.role === 'user' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-100'"
+          class="px-4 py-3 rounded-lg max-w-[80%] inline-block shadow-sm"
+          :class="[
+            m.role === 'user' ? 'bg-blue-600 text-white'
+            : m.content.startsWith('⚠️') ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100'
+              : 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-100',
+          ]"
         >
           {{ m.content }}
         </span>
       </div>
       <span
         v-if="streaming"
-        class="px-4 py-3 bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-100 rounded-lg inline-block animate-pulse shadow-sm"
+        class="text-gray-800 px-4 py-3 rounded-lg bg-gray-100 inline-block shadow-sm animate-pulse dark:text-gray-100 dark:bg-gray-800"
       >…</span>
     </div>
 
@@ -42,11 +46,11 @@ async function onSend() {
     <div class="mt-4 flex">
       <input
         v-model="input"
-        class="p-3 border border-gray-300 dark:border-gray-600 rounded-l-lg flex-1 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        class="text-gray-800 p-3 border border-gray-300 rounded-l-lg bg-white flex-1 dark:text-gray-100 focus:outline-none dark:border-gray-600 dark:bg-gray-800 focus:ring-2 focus:ring-blue-500"
         placeholder="Ask anything…"
         @keydown.enter.prevent="onSend"
       >
-      <button class="text-white px-6 rounded-r-lg bg-blue-600 hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500" @click="onSend">
+      <button class="text-white px-6 rounded-r-lg bg-blue-600 transition-colors focus:outline-none hover:bg-blue-700 focus:ring-2 focus:ring-blue-500" @click="onSend">
         Send
       </button>
     </div>

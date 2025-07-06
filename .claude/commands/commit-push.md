@@ -7,6 +7,7 @@ Create a conventional commit with all current changes and push to the remote rep
 1. Run `git status` to see all changes
 2. Run `git diff` to review the changes
 3. Analyze the changes and determine the appropriate conventional commit type:
+
    - `feat:` for new features
    - `fix:` for bug fixes
    - `docs:` for documentation changes
