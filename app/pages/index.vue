@@ -27,7 +27,11 @@ async function onSend() {
       >
         <span
           class="px-4 py-3 rounded-lg inline-block max-w-[80%] shadow-sm"
-          :class="m.role === 'user' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-100'"
+          :class="[
+            m.role === 'user' ? 'bg-blue-600 text-white' : 
+            m.content.startsWith('⚠️') ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100' :
+            'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-100'
+          ]"
         >
           {{ m.content }}
         </span>
