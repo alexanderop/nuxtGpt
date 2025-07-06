@@ -30,6 +30,13 @@ catalogs:
     unocss:
       specifier: ^66.3.2
       version: 66.3.2
+  default:
+    effect:
+      specifier: ^3.16.12
+      version: 3.16.12
+    openai:
+      specifier: ^5.8.2
+      version: 5.8.2
   dev:
     '@antfu/eslint-config':
       specifier: ^4.16.1
@@ -76,10 +83,10 @@ importers:
   .:
     dependencies:
       effect:
-        specifier: ^3.16.12
+        specifier: 'catalog:'
         version: 3.16.12
       openai:
-        specifier: ^5.8.2
+        specifier: 'catalog:'
         version: 5.8.2(ws@8.18.3)(zod@3.25.47)
     devDependencies:
       '@antfu/eslint-config':
