@@ -10,23 +10,20 @@ interface Emits {
   (e: 'submit'): void
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  placeholder: 'Type a message...',
-  loading: false,
-})
+const { placeholder = 'Type a message...', loading = false, modelValue } = defineProps<Props>()
 
 const emit = defineEmits<Emits>()
 
 const textarea = ref<HTMLTextAreaElement>()
 const inputValue = computed({
-  get: () => props.modelValue,
+  get: () => modelValue,
   set: value => emit('update:modelValue', value),
 })
 
 function handleKeydown(event: KeyboardEvent) {
   if (event.key === 'Enter' && !event.shiftKey) {
     event.preventDefault()
-    if (inputValue.value.trim() && !props.loading) {
+    if (inputValue.value.trim() && !loading) {
       emit('submit')
     }
   }

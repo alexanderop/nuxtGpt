@@ -39,7 +39,7 @@ function copyToClipboard(text: string) {
             v-if="role === 'user'"
             class="bg-primary/10 rounded-full flex h-8 w-8 items-center justify-center"
           >
-            <div class="i-carbon-user text-primary" />
+            <div class="text-primary i-carbon-user" />
           </div>
           <div
             v-else-if="role === 'assistant'"

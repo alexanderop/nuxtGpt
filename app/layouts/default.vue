@@ -11,27 +11,27 @@ const sidebarOpen = ref(true) // Default to open on desktop
       <Transition name="slide-desktop">
         <aside
           v-if="sidebarOpen"
-          class="border-r border-gray-200 bg-white w-64 overflow-y-auto dark:border-gray-700 dark:bg-gray-800 hidden lg:block"
+          class="border-r border-gray-200 bg-white w-64 hidden overflow-y-auto dark:border-gray-700 dark:bg-gray-800 lg:block"
         >
           <div class="p-4">
-            <div class="flex items-center justify-between mb-4">
+            <div class="mb-4 flex items-center justify-between">
               <h2 class="text-sm text-gray-600 tracking-wider font-semibold uppercase dark:text-gray-400">
                 Chat History
               </h2>
               <div class="group/close relative">
                 <button
                   type="button"
-                  class="p-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                  class="p-1.5 rounded transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
                   aria-label="Close sidebar"
                   @click="sidebarOpen = false"
                 >
                   <div class="i-carbon-side-panel-close text-gray-500 dark:text-gray-400" />
                 </button>
-                
+
                 <!-- Tooltip -->
-                <div class="pointer-events-none opacity-0 group-hover/close:opacity-100 transition-opacity absolute top-full right-0 mt-1 px-2 py-1 text-xs text-white bg-gray-800 rounded shadow-lg whitespace-nowrap">
+                <div class="text-xs text-white mt-1 px-2 py-1 rounded bg-gray-800 opacity-0 pointer-events-none whitespace-nowrap shadow-lg transition-opacity right-0 top-full absolute group-hover/close:opacity-100">
                   Close sidebar
-                  <div class="absolute top-0 right-2 -translate-y-1 w-0 h-0 border-l-4 border-l-transparent border-r-4 border-r-transparent border-b-4 border-b-gray-800" />
+                  <div class="border-b-4 border-l-4 border-r-4 border-b-gray-800 border-l-transparent border-r-transparent h-0 w-0 right-2 top-0 absolute -translate-y-1" />
                 </div>
               </div>
             </div>
@@ -47,20 +47,20 @@ const sidebarOpen = ref(true) // Default to open on desktop
         <button
           v-if="!sidebarOpen"
           type="button"
-          class="bg-primary text-white p-2 rounded-r-lg shadow-lg top-20 left-0 fixed z-50 transition-all hover:pl-3"
+          class="bg-primary text-white p-2 rounded-r-lg shadow-lg transition-all left-0 top-20 fixed z-50 hover:pl-3"
           aria-label="Open sidebar"
           @click="sidebarOpen = true"
         >
           <div class="i-carbon-side-panel-open text-xl" />
         </button>
-        
+
         <!-- Tooltip for closed sidebar -->
         <div
           v-if="!sidebarOpen"
-          class="pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity fixed top-20 left-12 z-50 px-2 py-1 text-xs text-white bg-gray-800 rounded shadow-lg whitespace-nowrap"
+          class="text-xs text-white px-2 py-1 rounded bg-gray-800 opacity-0 pointer-events-none whitespace-nowrap shadow-lg transition-opacity left-12 top-20 fixed z-50 group-hover:opacity-100"
         >
           Open sidebar
-          <div class="absolute left-0 top-1/2 -translate-x-1 -translate-y-1/2 w-0 h-0 border-t-4 border-t-transparent border-r-4 border-r-gray-800 border-b-4 border-b-transparent" />
+          <div class="border-b-4 border-r-4 border-t-4 border-b-transparent border-r-gray-800 border-t-transparent h-0 w-0 left-0 top-1/2 absolute -translate-x-1 -translate-y-1/2" />
         </div>
       </div>
 
