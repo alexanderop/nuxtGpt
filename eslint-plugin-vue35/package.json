@@ -1,0 +1,16 @@
+{
+  "name": "eslint-plugin-vue35",
+  "type": "commonjs",
+  "version": "1.0.0",
+  "description": "ESLint rules for Vue 3.5 modern patterns",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "vue",
+    "vue3"
+  ],
+  "main": "lib/index.js",
+  "peerDependencies": {
+    "eslint": ">=8.0.0"
+  }
+}

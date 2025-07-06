@@ -1,5 +1,6 @@
 packages: []
 catalog:
+  '@effect/eslint-plugin': ^0.3.2
   effect: ^3.16.12
   openai: ^5.8.2
 catalogs:
