@@ -108,3 +108,19 @@ Example command: "commit and push the latest changes"
 - `refactor:` - Code change that neither fixes a bug nor adds a feature
 - `test:` - Adding or updating tests
 - `chore:` - Changes to build process or auxiliary tools
+
+## Development Workflow
+
+### Code Quality Checks
+
+**IMPORTANT**: After making any file changes, always run the following commands to ensure code quality:
+
+```bash
+# Run linting to check code style
+pnpm lint
+
+# Run type checking to ensure TypeScript correctness
+pnpm typecheck
+```
+
+These commands must be run after every file modification to maintain code quality and catch potential issues early.

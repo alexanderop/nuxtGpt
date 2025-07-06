@@ -6,6 +6,7 @@ interface Msg { role: 'user' | 'assistant', content: string }
 export function useChat() {
   const messages = ref<Msg[]>([])
   const streaming = ref(false)
+  const streamingContent = ref('')
   let fiber: Fiber.RuntimeFiber<void, never> | undefined
 
   const send = (content: string) => {
@@ -18,6 +19,7 @@ export function useChat() {
     const program = Effect.gen(function* () {
       messages.value.push({ role: 'user', content })
       streaming.value = true
+      streamingContent.value = ''
 
       // Network request
       const res = yield* Effect.tryPromise({
@@ -32,8 +34,7 @@ export function useChat() {
       // Read the stream
       const reader = res.body!.getReader()
       const decoder = new TextDecoder()
-      const assistant: Msg = { role: 'assistant', content: '' }
-      messages.value.push(assistant)
+      let fullContent = ''
 
       while (true) {
         const { done, value } = yield* Effect.tryPromise({
@@ -42,13 +43,20 @@ export function useChat() {
         })
         if (done)
           break
-        assistant.content += decoder.decode(value)
+        const chunk = decoder.decode(value)
+        fullContent += chunk
+        streamingContent.value = fullContent
       }
+
+      // Add the complete message to messages array
+      messages.value.push({ role: 'assistant', content: fullContent })
       streaming.value = false
+      streamingContent.value = ''
     }).pipe(
       Effect.catchAll((err) => {
         messages.value.push({ role: 'assistant', content: `⚠️ ${err.message}` })
         streaming.value = false
+        streamingContent.value = ''
         return Effect.void
       }),
     )
@@ -64,5 +72,5 @@ export function useChat() {
     }
   })
 
-  return { messages, send, streaming }
+  return { messages, send, streaming, streamingContent }
 }
