@@ -1,16 +1,17 @@
-import { Effect, Fiber } from 'effect'
+import type { Fiber } from 'effect'
+import { Effect } from 'effect'
 
 interface Msg { role: 'user' | 'assistant', content: string }
 
 export function useChat() {
   const messages = ref<Msg[]>([])
   const streaming = ref(false)
-  let fiber: Fiber.RuntimeFiber<never, void> | undefined
+  let fiber: Fiber.RuntimeFiber<void, never> | undefined
 
   const send = (content: string) => {
     // Cancel any previous stream
     if (fiber) {
-      fiber.interrupt()
+      Effect.runFork(fiber.interruptAsFork(fiber.id()))
     }
 
     // Build the Effect
@@ -25,7 +26,7 @@ export function useChat() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ messages: messages.value }),
         }),
-        catch: (e) => new Error(String(e)),
+        catch: e => new Error(String(e)),
       })
 
       // Read the stream
@@ -37,9 +38,10 @@ export function useChat() {
       while (true) {
         const { done, value } = yield* Effect.tryPromise({
           try: () => reader.read(),
-          catch: (e) => new Error(String(e)),
+          catch: e => new Error(String(e)),
         })
-        if (done) break
+        if (done)
+          break
         assistant.content += decoder.decode(value)
       }
       streaming.value = false
@@ -48,7 +50,7 @@ export function useChat() {
         messages.value.push({ role: 'assistant', content: `⚠️ ${err.message}` })
         streaming.value = false
         return Effect.void
-      })
+      }),
     )
 
     // Fork instead of runPromise
@@ -58,7 +60,7 @@ export function useChat() {
   // Interrupt if component unmounts
   onScopeDispose(() => {
     if (fiber) {
-      fiber.interrupt()
+      Effect.runFork(fiber.interruptAsFork(fiber.id()))
     }
   })
 

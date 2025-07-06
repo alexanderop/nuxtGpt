@@ -23,23 +23,27 @@ A real-time streaming chat application built with Nuxt 3 and OpenAI's GPT-4 API.
 ### Setup
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/yourusername/nuxtgpt.git
 cd nuxtgpt
 ```
 
 2. Install dependencies:
+
 ```bash
 pnpm install
 ```
 
 3. Set up environment variables:
+
 ```bash
 cp .env.example .env
 # Edit .env and add your OPENAI_API_KEY
 ```
 
 4. Start the development server:
+
 ```bash
 pnpm dev
 ```

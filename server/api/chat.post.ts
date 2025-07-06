@@ -40,6 +40,6 @@ export default eventHandler(event =>
     return sendStream(event, out)
   }).pipe(
     Effect.provide(OpenAILayer),
-    Effect.runPromise
-  )
+    Effect.runPromise,
+  ),
 )
